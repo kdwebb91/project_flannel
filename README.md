@@ -5,7 +5,7 @@ TAMU CSCE 470 Final Project
 
 -----------------------
 
-Download and Extract "MSongsDB-master.zip"
+Download and Extract "MILLION SONG DATASET" from http://labrosa.ee.columbia.edu/millionsong/pages/getting-dataset
 
 Create a Visual Studio Project
 
