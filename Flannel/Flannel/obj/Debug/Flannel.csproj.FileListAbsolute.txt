@@ -1,0 +1,9 @@
+c:\users\kevin\documents\visual studio 2012\Projects\Flannel\Flannel\bin\Debug\Flannel.exe.config
+c:\users\kevin\documents\visual studio 2012\Projects\Flannel\Flannel\obj\Debug\Flannel.csprojResolveAssemblyReference.cache
+c:\users\kevin\documents\visual studio 2012\Projects\Flannel\Flannel\bin\Debug\Flannel.exe
+c:\users\kevin\documents\visual studio 2012\Projects\Flannel\Flannel\bin\Debug\Flannel.pdb
+c:\users\kevin\documents\visual studio 2012\Projects\Flannel\Flannel\obj\Debug\Flannel.exe
+c:\users\kevin\documents\visual studio 2012\Projects\Flannel\Flannel\obj\Debug\Flannel.pdb
+C:\Users\Kevin\documents\visual studio 2012\Projects\Flannel\Flannel\bin\Debug\System.Data.SQLite.dll
+C:\Users\Kevin\documents\visual studio 2012\Projects\Flannel\Flannel\bin\Debug\System.Data.SQLite.xml
+C:\Users\Kevin\documents\visual studio 2012\Projects\Flannel\Flannel\bin\Debug\System.Data.SQLite.pdb
