@@ -46,8 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Metadata.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Python.cs" />
+    <Compile Include="Similarity.cs" />
+    <Compile Include="Term.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

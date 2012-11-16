@@ -10,3 +10,8 @@ C:\Users\Kevin\documents\visual studio 2012\Projects\Flannel\Flannel\bin\Debug\S
 C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel\Flannel\bin\Debug\Flannel.exe.config
 C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel\Flannel\obj\Debug\Flannel.exe
 C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel\Flannel\obj\Debug\Flannel.pdb
+C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel\Flannel\bin\Debug\Flannel.exe
+C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel\Flannel\bin\Debug\Flannel.pdb
+C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel\Flannel\bin\Debug\System.Data.SQLite.pdb
+C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel\Flannel\bin\Debug\System.Data.SQLite.xml
+C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel\Flannel\obj\Debug\Flannel.csprojResolveAssemblyReference.cache
