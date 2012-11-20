@@ -1,0 +1,13 @@
+track_id
+title
+artist_id
+artist_name
+duration
+artist_familiarity
+artist_hotttness
+year
+
+term
+
+target
+similar
