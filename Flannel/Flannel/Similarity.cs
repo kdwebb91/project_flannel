@@ -11,6 +11,28 @@ namespace Flannel
         private static string SIMILARITY_DB_LOC = "Data Source=subset_artist_similarity.db;Version=3;";
         private static SQLiteConnection SIMILARITY_DB = new SQLiteConnection(SIMILARITY_DB_LOC);
 
+        public static List<Artist> GetSimilarArtists(string szArtistId)
+        {
+            List<Artist> similarArtists = new List<Artist>();
+            string szQuery = "SELECT similar FROM similarity WHERE target='" + szArtistId + "'";
+            try
+            {
+                SIMILARITY_DB.Open();
+                SQLiteCommand command = new SQLiteCommand(szQuery, SIMILARITY_DB);
+                SIMILARITY_DB.Close();
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    similarArtists.Add(Metadata.CreateArtist(reader[0].ToString()));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return similarArtists;
+        }
+
         public static List<string> getSimilarArtists(string szArtistId)
         {
             List<string> similarArtists = new List<string>();

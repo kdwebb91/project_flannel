@@ -284,5 +284,104 @@ namespace Flannel
             }
             return avgNumSongs;
         }
+
+        public static double GetArtistFamiliarity(string szArtistId)
+        {
+            double artist_familiarity = 0;
+            string szQuery = "SELECT artist_familiarity FROM songs WHERE artist_id='" + szArtistId + "'";
+            try
+            {
+                METADATA_DB.Open();
+                SQLiteCommand command = new SQLiteCommand(szQuery, METADATA_DB);
+                SQLiteDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    artist_familiarity = Convert.ToDouble(reader["artist_familiarity"].ToString());
+                }
+                METADATA_DB.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return artist_familiarity;
+        }
+
+        public static double GetArtistHotttness(string szArtistId)
+        {
+            double artist_hotttnesss = 0;
+            string szQuery = "SELECT artist_hotttnesss FROM songs WHERE artist_id='" + szArtistId + "'";
+            try
+            {
+                METADATA_DB.Open();
+                SQLiteCommand command = new SQLiteCommand(szQuery, METADATA_DB);
+                SQLiteDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    artist_hotttnesss = Convert.ToDouble(reader["artist_hotttnesss"].ToString());
+                }
+                METADATA_DB.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return artist_hotttnesss;
+        }
+
+        public static List<Song> GetSongsFromArtist(string szArtistId)
+        {
+            List<Song> songs = new List<Song>();
+            string szQuery = "SELECT * FROM songs WHERE artist_id='" + szArtistId + "'";
+            try
+            {
+                METADATA_DB.Open();
+                SQLiteCommand command = new SQLiteCommand(szQuery, METADATA_DB);
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    songs.Add(new Song(reader["track_id"].ToString(),
+                                        reader["title"].ToString(),
+                                        reader["release"].ToString(),
+                                        reader["duration"].ToString(),
+                                        reader["year"].ToString(),
+                                        new Artist(reader["artist_id"].ToString(),
+                                            reader["artist_name"].ToString(),
+                                            Convert.ToDouble(reader["artist_familiarity"].ToString()),
+                                            Convert.ToDouble(reader["artist_hotttnesss"].ToString()))));
+                }
+                METADATA_DB.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return songs;
+        }
+
+        public static Artist CreateArtist(string szArtistId)
+        {
+            Artist artist = null;
+            string szQuery = "SELECT * FROM songs WHERE artist_id='" + szArtistId + "'";
+            try
+            {
+                METADATA_DB.Open();
+                SQLiteCommand command = new SQLiteCommand(szQuery, METADATA_DB);
+                METADATA_DB.Close();
+                SQLiteDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    artist = new Artist(reader["artist_id"].ToString(),
+                                            reader["artist_name"].ToString(),
+                                            Convert.ToDouble(reader["artist_familiarity"].ToString()),
+                                            Convert.ToDouble(reader["artist_hotttnesss"].ToString()));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return artist;
+        }
     }
 }

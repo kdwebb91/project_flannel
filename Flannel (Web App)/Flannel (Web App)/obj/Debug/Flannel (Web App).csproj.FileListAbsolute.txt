@@ -1,0 +1,5 @@
+C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel (Web App)\Flannel (Web App)\bin\Flannel (Web App).dll
+C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel (Web App)\Flannel (Web App)\bin\Flannel (Web App).pdb
+C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel (Web App)\Flannel (Web App)\obj\Debug\Flannel (Web App).dll
+C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel (Web App)\Flannel (Web App)\obj\Debug\Flannel (Web App).pdb
+C:\Users\Kevin\Documents\GitHub\project_flannel\Flannel (Web App)\Flannel (Web App)\obj\Debug\Flannel (Web App).csprojResolveAssemblyReference.cache

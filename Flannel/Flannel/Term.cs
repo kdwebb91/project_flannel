@@ -11,7 +11,7 @@ namespace Flannel
         private static string TERM_DB_LOC = "Data Source=subset_artist_term.db;Version=3;";
         private static SQLiteConnection TERM_DB = new SQLiteConnection(TERM_DB_LOC);
 
-        public static List<string> getArtistGenres(string szArtistId)
+        public static List<string> GetGenresFromArtist(string szArtistId)
         {
             List<string> artistGenres = new List<string>();
             string szQuery = "SELECT term FROM artist_term WHERE artist_id='" + szArtistId + "'";
@@ -33,7 +33,7 @@ namespace Flannel
             return artistGenres;
         }
 
-        public static List<string> getGenreArtists(string szGenre)
+        public static List<string> GetArtistsFromGenre(string szGenre)
         {
             List<string> genreArtists = new List<string>();
             string szQuery = "SELECT artist_id FROM artist_term WHERE term='" + szGenre + "'";
@@ -215,21 +215,21 @@ namespace Flannel
             try
             {
                 TERM_DB.Open();
-                for (int i = 0; i < Program.popularMusicGenres.Count; i++)
+                for (int i = 0; i < Program.PopularMusicGenres.Count; i++)
                 {
-                    string szQuery = "SELECT COUNT(artist_id) FROM artist_term WHERE term='" + Program.popularMusicGenres[i] + "'";
+                    string szQuery = "SELECT COUNT(artist_id) FROM artist_term WHERE term='" + Program.PopularMusicGenres[i] + "'";
                     try
                     {
                         SQLiteCommand command = new SQLiteCommand(szQuery, TERM_DB);
                         SQLiteDataReader reader = command.ExecuteReader();
                         if (reader.Read())
                         {
-                            data.Add(Program.popularMusicGenres[i], Convert.ToInt32(reader[0].ToString()));
+                            data.Add(Program.PopularMusicGenres[i], Convert.ToInt32(reader[0].ToString()));
                         }
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("Genre " + Program.popularMusicGenres[i] + " threw an exception.");
+                        Console.WriteLine("Genre " + Program.PopularMusicGenres[i] + " threw an exception.");
                         Console.WriteLine(e.ToString());
                         continue;
                     }
@@ -256,7 +256,7 @@ namespace Flannel
                 {
                     break;
                 }
-                List<string> genreArtists = getGenreArtists(szGenre);
+                List<string> genreArtists = GetArtistsFromGenre(szGenre);
                 Console.WriteLine('\n' + "The genre '" + szGenre + "' includes to the following " + genreArtists.Count.ToString() + " artist(s):");
                 for (int i = 0; i < genreArtists.Count; i++)
                 {
@@ -284,7 +284,7 @@ namespace Flannel
                     Console.WriteLine("ERROR: Artist not found!");
                     continue;
                 }
-                List<string> artistGenres = getArtistGenres(szArtistId);
+                List<string> artistGenres = GetGenresFromArtist(szArtistId);
                 Console.WriteLine('\n' + szArtistName + " belongs to the following " + artistGenres.Count.ToString() + " genre(s):");
                 for (int i = 0; i < artistGenres.Count; i++)
                 {
