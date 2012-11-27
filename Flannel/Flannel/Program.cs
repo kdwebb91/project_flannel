@@ -138,12 +138,24 @@ namespace Flannel
 
         static void Main(string[] args)
         {
+            /*
             Console.WriteLine(test_FindArtistInDB(Artists));
             printHITS(Artists);
             printFamiliarities(Artists);
             printHotttnessses(Artists);
             Metadata.GetSongsFromArtist(Metadata.getArtistIdFromName(Artists[0]));
-            Console.Read();
+             */
+
+            while (true)
+            {
+                string query = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(query))
+                {
+                    break;
+                }
+                Metadata.PrintMatchingArtists(query);
+                Console.WriteLine();
+            }
         }
     }
 }

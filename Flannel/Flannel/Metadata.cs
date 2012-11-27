@@ -383,5 +383,104 @@ namespace Flannel
             }
             return artist;
         }
+
+        public static HashSet<string> GetAllArtistIds()
+        {
+            HashSet<string> artistIds = new HashSet<string>();
+            string szQuery = "SELECT artist_id FROM songs";
+            try
+            {
+                METADATA_DB.Open();
+                SQLiteCommand command = new SQLiteCommand(szQuery, METADATA_DB);
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    artistIds.Add(reader["artist_id"].ToString());
+                }
+                METADATA_DB.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return artistIds;
+        }
+
+        public static HashSet<string> GetAllArtistNames()
+        {
+            HashSet<string> artistIds = GetAllArtistIds();
+            HashSet<string> artistNames = new HashSet<string>();
+            
+            try
+            {
+                METADATA_DB.Open();
+                foreach (string artistId in artistIds)
+                {
+                    try
+                    {
+                        string szQuery = "SELECT artist_name FROM songs WHERE artist_id='" + artistId + "'";
+                        SQLiteCommand command = new SQLiteCommand(szQuery, METADATA_DB);
+                        SQLiteDataReader reader = command.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            artistNames.Add(reader["artist_name"].ToString());
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                    }
+                }
+                METADATA_DB.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return artistNames;
+        }
+
+        public static void PrintMatchingArtists(string szArtistName)
+        {
+            HashSet<string> artistNames = Metadata.GetAllArtistNames();
+            HashSet<string> possibleMatches = new HashSet<string>();
+            bool matchFound = false;
+            string query = szArtistName;
+            string matchingArtist = string.Empty;
+            foreach (string artistName in artistNames)
+            {
+                if (artistName.Equals(query, StringComparison.OrdinalIgnoreCase))
+                {
+                    matchingArtist = artistName;
+                    matchFound = true;
+                    break;
+                }
+                else if (artistName.ToLower().Contains(query))
+                {
+                    possibleMatches.Add(artistName);
+                }
+            }
+            if (matchFound == false && possibleMatches.Count == 1)
+            {
+                matchingArtist = possibleMatches.FirstOrDefault();
+                matchFound = true;
+            }
+            if (matchFound == true)
+            {
+                Console.WriteLine(query + " == " + matchingArtist);
+            }
+            else if (possibleMatches.Count > 1)
+            {
+                Console.WriteLine(query + " possible matches:");
+                foreach (string match in possibleMatches)
+                {
+                    Console.WriteLine("\t" + match);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No matches found for " + query + "!");
+            }
+        }
     }
 }
