@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Facebook;
-using System.IO;
-using System.Text;
 
+using Facebook;
+using System.Text.RegularExpressions;
 using Flannel;
 
 namespace MvcApplication1.Controllers
@@ -66,8 +65,21 @@ namespace MvcApplication1.Controllers
             return View();
         }
 
-        public ActionResult Results()
+        public ActionResult Results(FormCollection formCollection)
         {
+            ViewBag.Message = "bands:<br \\>";
+
+            String url = Request.Url.ToString();
+            
+            //ViewBag.Message = formCollection["bands"];
+            Regex find_bands = new Regex("\\|[^\\|]{1,}\\|");
+            MatchCollection matches = find_bands.Matches(url);
+            foreach (Match match in matches)
+            {
+                ViewBag.Message += match.ToString().Substring(1).TrimEnd('|') + "<br \\>";
+            }
+            ViewBag.Message += "END";
+
             List<string> Artists = new List<string>()
             {
                 "Incubus",
@@ -86,7 +98,7 @@ namespace MvcApplication1.Controllers
             List<Song> test = Rec.GeneratePlaylist(Artists);
             foreach (Song sng in test)
             {
-                ViewBag.Message += sng.Title;
+                //ViewBag.Message += sng.Title;
             }
             return View();
         }

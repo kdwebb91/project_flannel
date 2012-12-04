@@ -24,9 +24,9 @@
 <div id="content">
     <div id="left_side">
     <!--<p style="position:relative;left:30px;">-->
-    <form action="~/Views/Home/Results" method="get" style="position:relative;left:30px;">
-    <input type="button" name="submit" id="submit" class="SubmitButton"  /><br />
-    </form>  
+    <form action="~/Home/Results" method="get" style="position:relative;left:30px;">
+    <input type="button" name="submit" id="submit" class="SubmitButton" onclick="process_data();" /><br />
+    </form> 
         <b>Step 1: Select Some Of The Bands From Here -> <br />
         Step 2: Click Submit. <br />
         Step 3: ??? <br />
@@ -35,12 +35,13 @@
     </div>
 
     <div id="right_side">
-        <form id="BandForm">
+        <form action="~/Home/Results" id="BandForm">
         @Html.Raw(ViewBag.Likes)
         </form>
 
         <input name="NewBand" id="newband" type="text" />
         <input type="button" value="Add" onClick="add()" />
+
     </div>
  </div>
 
@@ -117,7 +118,16 @@ FOOT STUFF</div>
         var checkbox = new ImageCheckbox(document.getElementById(i), 'http://localhost:23232/Content/Images/checkbox_checked.png', 'http://localhost:23232/Content/Images/checkbox_unchecked.png');
     }
 
-    
+    function process_data() {
+        var str = "";
+        for (var i = 1 ; i <= highest_element; i++) {
+            if (document.getElementById(i).checked == true) {
+                str += "|"+document.getElementById(i).value + "|";
+            }
+        }
+        location.href = "Results" + "?bands="+str;
+
+    }
 </script>
 
 </body>

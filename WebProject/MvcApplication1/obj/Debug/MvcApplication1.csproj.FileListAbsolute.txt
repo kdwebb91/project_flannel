@@ -80,6 +80,5 @@ C:\Users\Andrew\Documents\GitHub\project_flannel\WebProject\MvcApplication1\bin\
 C:\Users\Andrew\Documents\GitHub\project_flannel\WebProject\MvcApplication1\bin\System.Web.WebPages.xml
 C:\Users\Andrew\Documents\GitHub\project_flannel\WebProject\MvcApplication1\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Andrew\Documents\GitHub\project_flannel\WebProject\MvcApplication1\bin\System.Web.WebPages.Razor.xml
-C:\Users\Andrew\Documents\GitHub\project_flannel\WebProject\MvcApplication1\obj\Debug\MvcApplication1.csprojResolveAssemblyReference.cache
 C:\Users\Andrew\Documents\GitHub\project_flannel\WebProject\MvcApplication1\obj\Debug\MvcApplication1.dll
 C:\Users\Andrew\Documents\GitHub\project_flannel\WebProject\MvcApplication1\obj\Debug\MvcApplication1.pdb
