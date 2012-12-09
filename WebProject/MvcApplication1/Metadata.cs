@@ -8,7 +8,7 @@ namespace Flannel
 {
     class Metadata
     {
-        private static string METADATA_DB_LOC = "Data Source=D:\\Project\\MvcApplication1\\MvcApplication1\\App_Data\\subset_track_metadata.db;Version=3;";
+        private static string METADATA_DB_LOC = "Data Source=C:\\Users\\Jeff\\isrhw\\flannel_tracks\\MillionSongSubset\\AdditionalFiles\\subset_track_metadata.db;Version=3;";
         private static SQLiteConnection METADATA_DB = new SQLiteConnection(METADATA_DB_LOC);
 
         public static string GetTopSong(string szArtistId)

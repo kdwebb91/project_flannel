@@ -34,8 +34,9 @@
     <!--</p>-->
     </div>
 
-    <div id="right_side">
-        <form action="~/Home/Results" id="BandForm">
+    <div id="right_side" style="height:100%">
+        <!-- height:420px  -->
+        <form action="~/Home/Results" id="BandForm" style="overflow:auto; height:420px">
         @Html.Raw(ViewBag.Likes)
         </form>
 

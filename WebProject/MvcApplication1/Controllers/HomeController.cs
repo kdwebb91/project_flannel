@@ -98,7 +98,7 @@ namespace MvcApplication1.Controllers
             List<Song> test = Rec.GeneratePlaylist(Artists);
             foreach (Song sng in test)
             {
-                //ViewBag.Message += sng.Title;
+                ViewBag.Message += sng.Title;
             }
             return View();
         }
